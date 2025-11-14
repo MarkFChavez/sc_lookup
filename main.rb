@@ -35,7 +35,7 @@ when "email_dup_search"
 
   puts "Returning clients with duplicate emails"
 
-  clients = Finder.clients_with_duplicates(clients_file)
+  clients = Finder.clients_with_duplicates!(clients_file)
 
   if clients.empty?
     puts "No clients with matching emails"

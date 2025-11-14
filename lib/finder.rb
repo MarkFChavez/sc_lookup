@@ -8,7 +8,7 @@ class Finder
     clients
   end
 
-  def self.clients_with_duplicates(file, by = "email")
+  def self.clients_with_duplicates!(file, by = "email")
     grouped_data = JSON.parse(file).group_by { |hash| hash[by] }
     duplicate_records = grouped_data.select { |_email, how_many| how_many.size > 1 }.
       values.
