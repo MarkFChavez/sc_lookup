@@ -3,7 +3,13 @@
 require "json"
 require_relative "../lib/finder"
 
-clients_file = File.read(ARGV[0])
+file_input = ARGV[0]
+
+if file_input.nil? || file_input.empty?
+  raise "File not found. Make sure it exists or is in the correct location."
+end
+
+clients_file = File.read(file_input)
 
 # Ask for user input
 puts "What command do you want to execute?"
