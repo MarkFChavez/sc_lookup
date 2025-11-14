@@ -3,6 +3,11 @@
 $ ruby main.rb
 ```
 
+### Running Tests
+```
+$ bin/rspec
+```
+
 ### Assumptions
 - The input file contains consistent format/structure.
 
