@@ -1,9 +1,14 @@
-### Setup / Usage
+### Setup
+```
+$ bundle install
+```
+
+### Usage
 ```
 $ bin/run <file>
 ```
 
-### Running Tests
+### Testing
 ```
 $ bin/rspec
 ```
