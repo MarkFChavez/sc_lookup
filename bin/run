@@ -8,8 +8,8 @@ clients_file = File.read(ARGV[0])
 # Ask for user input
 puts "What command do you want to execute?"
 puts "------------------------------------"
-puts "client_search"
-puts "email_dup_search"
+puts "👉🏼 client_search"
+puts "👉🏼 email_dup_search"
 print "Command: "
 cmd_input = STDIN.gets.chomp
 
@@ -17,7 +17,7 @@ case cmd_input.to_s.downcase
 when "client_search"
 
   # Do client search
-  puts "You chose #{cmd_input}"
+  puts "You are choosing '#{cmd_input}'"
   puts "-----------------------"
   print "Search client name: "
   client_name_input = STDIN.gets.chomp
@@ -31,6 +31,7 @@ when "client_search"
 
   # Output:
   puts "Clients found:"
+  puts "--------------"
   puts clients
 
 when "email_dup_search"
@@ -46,6 +47,7 @@ when "email_dup_search"
 
   # Output:
   puts "Clients with matching emails:"
+  puts "-----------------------------"
   puts clients
 
 else
