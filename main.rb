@@ -20,7 +20,7 @@ when "client_search"
   print "Search client name: "
   client_name_input = STDIN.gets.chomp
 
-  clients = Finder.search_by_email!(clients_file, client_name_input)
+  clients = Finder.search!(clients_file, client_name_input)
 
   if clients.empty?
     puts "No clients matched your search '#{client_name_input}'"
@@ -35,7 +35,7 @@ when "email_dup_search"
 
   puts "Returning clients with duplicate emails"
 
-  clients = Finder.clients_with_duplicates!(clients_file)
+  clients = Finder.with_duplicates!(clients_file)
 
   if clients.empty?
     puts "No clients with matching emails"
