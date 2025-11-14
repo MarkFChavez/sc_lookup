@@ -1,6 +1,6 @@
 ### Setup / Usage
 ```
-$ ruby main.rb
+$ bin/run <file>
 ```
 
 ### Running Tests

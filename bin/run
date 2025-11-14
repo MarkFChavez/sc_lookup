@@ -1,5 +1,7 @@
+#!/usr/bin/env ruby
+
 require "json"
-require_relative "./lib/finder"
+require_relative "../lib/finder"
 
 clients_file = File.read(ARGV[0])
 
