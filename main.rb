@@ -1,4 +1,5 @@
 require "json"
+require_relative "./lib/finder"
 
 clients_file = File.read(ARGV[0])
 
@@ -19,10 +20,7 @@ when "client_search"
   print "Search client name: "
   client_name_input = STDIN.gets.chomp
 
-  clients_array = JSON.parse(clients_file)
-  clients = clients_array.select do |client_hash|
-    client_hash["full_name"].downcase.include?(client_name_input.downcase)
-  end
+  clients = Finder.search_by_email!(clients_file, client_name_input)
 
   if clients.empty?
     puts "No clients matched your search '#{client_name_input}'"
@@ -36,22 +34,17 @@ when "client_search"
 when "email_dup_search"
 
   puts "Returning clients with duplicate emails"
-  clients_array = JSON.parse(clients_file)
 
-  clients_with_duplicate_emails = clients_array.group_by do |client_hash|
-    client_hash["email"]
-  end.select do |_email, how_many|
-    how_many.size > 1
-  end.values.flatten
+  clients = Finder.clients_with_duplicates(clients_file)
 
-  if clients_with_duplicate_emails.empty?
+  if clients.empty?
     puts "No clients with matching emails"
     return
   end
 
   # Output:
   puts "Clients with matching emails:"
-  puts clients_with_duplicate_emails
+  puts clients
 
 else
 
